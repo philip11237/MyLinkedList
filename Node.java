@@ -5,11 +5,20 @@ public class Node{
   public String getData(){
     return data;
   }
-  public String getNext(){
+  public Node getNext(){
     return next;
   }
-  public String getPrev(){
+  public Node getPrev(){
     return prev;
+  }
+  public void setData(String n){
+   data=n;
+  }
+  public void setNext(Node n){
+      next=n;
+  }
+  public void setPrev(Node n){
+     prev=n;
   }
  //write get/set methods for all three instance variables.
 }
