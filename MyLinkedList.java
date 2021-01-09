@@ -106,8 +106,28 @@ public class MyLinkedList{
       size--;
       return temp2;
     }
-
-
   }
+  public void extend(MyLinkedList other){
+    if (other.size()==0){
+      return;
+    }
+    if(this.size==0){
+      this.start=other.start;
+      this.end=other.end;
+      other.start=null;
+      other.end=null;
+      this.size=other.size;
+      other.size=0;
+    }
+    else{
+      this.end.setNext(other.start);
+      other.start.setPrev(this.end);
+      this.end=other.end;
+      this.size=this.size+other.size;
+      other.start=null;
+      other.end=null;
+      other.size=0;
+    }
+ }
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
