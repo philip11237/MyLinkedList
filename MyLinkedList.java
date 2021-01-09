@@ -38,6 +38,7 @@ public class MyLinkedList{
     temp2.setPrev(temp);
     temp2.getNext().setPrev(temp2);
     temp.setNext(temp2);
+    size++;
   }
   public String get(int index){
     if (index>=size||index<0){
@@ -65,6 +66,40 @@ public class MyLinkedList{
     return temp2;
   }
   public String toString(){
+
+  }
+  public String remove(int index){
+    if (index>=size||index<0){
+      throw new  IndexOutOfBoundsException();
+    }
+    Node temp=start;
+    while (index>0){
+      index--;
+      temp=temp.getNext();
+    }
+      if (size=1){
+        String temp2=temp.getData();
+        end=null;
+        start=null;
+        size--;
+        return temp2;
+
+      }
+    if (temp.getNext==null){
+      String temp2=temp.getData();
+      end=temp.getPrev();
+      end.setNext(null);
+      size--;
+      return temp2;
+    }
+    if (temp.getPrev==null){
+      string temp2=temp.getData();
+      start=temp.geNext();
+      start.setPrev(null);
+      size--;
+      return temp2;
+    }
+
 
   }
   //Any helper method that returns a Node object MUST BE PRIVATE!
