@@ -66,6 +66,25 @@ public class MyLinkedList{
     return temp2;
   }
   public String toString(){
+    Node temp2=start;
+    String ret="";
+    while (temp2!=null){
+      ret= ret+temp2.getData()+" ";
+      temp2=temp2.getNext();
+
+
+    }return ret;
+
+  }
+  public String toStringreversed(){
+    Node temp2=end;
+    String ret="";
+    while (temp2!=null){
+      ret= ret+temp2.getData()+" ";
+      temp2=temp2.getPrev();
+
+
+    }return ret;
 
   }
   public String remove(int index){
@@ -77,14 +96,14 @@ public class MyLinkedList{
       index--;
       temp=temp.getNext();
     }
-      if (size=1){
-        String temp2=temp.getData();
-        end=null;
-        start=null;
-        size--;
-        return temp2;
+    if (size=1){
+      String temp2=temp.getData();
+      end=null;
+      start=null;
+      size--;
+      return temp2;
 
-      }
+    }
     if (temp.getNext==null){
       String temp2=temp.getData();
       end=temp.getPrev();
@@ -128,6 +147,6 @@ public class MyLinkedList{
       other.end=null;
       other.size=0;
     }
- }
+  }
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
