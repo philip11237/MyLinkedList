@@ -1,3 +1,4 @@
+import java.lang.IndexOutOfBoundsException;
 public class MyLinkedList{
   private int size;
   private Node start,end;
@@ -24,13 +25,44 @@ public class MyLinkedList{
     }
   }
   public void add(int index, String value){
-
+    if (index>=size||index<0){
+      throw new  IndexOutOfBoundsException();
+    }
+    Node temp=start;
+    while (index>0){
+      index--;
+      temp=temp.getNext();
+    }
+    Node temp2=new Node(value);
+    temp2.setNext(temp.getNext());
+    temp2.setPrev(temp);
+    temp2.getNext().setPrev(temp2);
+    temp.setNext(temp2);
   }
   public String get(int index){
+    if (index>=size||index<0){
+      throw new  IndexOutOfBoundsException();
+    }
+    Node temp=start;
+    while (index>0){
+      index--;
+      temp=temp.getNext();
+    }
+    return temp.getData();
 
   }
   public String set(int index, String value){
-
+    if (index>=size||index<0){
+      throw new  IndexOutOfBoundsException();
+    }
+    Node temp=start;
+    while (index>0){
+      index--;
+      temp=temp.getNext();
+    }
+    String temp2= temp.getData();
+    temp.setData(value)
+    return temp2;
   }
   public String toString(){
 
