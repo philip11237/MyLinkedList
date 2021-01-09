@@ -93,9 +93,16 @@ public class MyLinkedList{
       return temp2;
     }
     if (temp.getPrev==null){
-      string temp2=temp.getData();
+      String temp2=temp.getData();
       start=temp.geNext();
       start.setPrev(null);
+      size--;
+      return temp2;
+    }
+    else{
+      String temp2=temp.getData();
+      temp.getPrev().setNext(temp.getNext());
+      temp.getNext().setPrev(temp.getPrev());
       size--;
       return temp2;
     }
