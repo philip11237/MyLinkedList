@@ -22,21 +22,40 @@ public class MyLinkedList{
       temp.setPrev(end);
       size++;
       end=temp;
-    }
+    }return true;
   }
   public void add(int index, String value){
-    if (index>=size||index<0){
+    if (index==size){
+      add(value);
+      return;
+    }
+    if (index==0){
+      Node temp3=new Node (value);
+      temp3.setNext(start);
+      start.setPrev(temp3);
+      size++;
+      start=temp3;
+      return;
+    }
+
+    if (index>size||index<0){
       throw new  IndexOutOfBoundsException();
     }
     Node temp=start;
-    while (index>0){
+index--;
+
+      while (index>0){
       index--;
       temp=temp.getNext();
     }
     Node temp2=new Node(value);
     temp2.setNext(temp.getNext());
     temp2.setPrev(temp);
-    temp2.getNext().setPrev(temp2);
+    if (temp2.getNext()==null){
+      end=temp2;
+    }
+  else{  temp2.getNext().setPrev(temp2);
+  }
     temp.setNext(temp2);
     size++;
   }
@@ -50,7 +69,6 @@ public class MyLinkedList{
       temp=temp.getNext();
     }
     return temp.getData();
-
   }
   public String set(int index, String value){
     if (index>=size||index<0){
@@ -62,7 +80,7 @@ public class MyLinkedList{
       temp=temp.getNext();
     }
     String temp2= temp.getData();
-    temp.setData(value)
+    temp.setData(value);
     return temp2;
   }
   public String toString(){
@@ -76,7 +94,7 @@ public class MyLinkedList{
     }return ret;
 
   }
-  public String toStringreversed(){
+  public String toStringReversed(){
     Node temp2=end;
     String ret="";
     while (temp2!=null){
@@ -96,7 +114,7 @@ public class MyLinkedList{
       index--;
       temp=temp.getNext();
     }
-    if (size=1){
+    if (size==1){
       String temp2=temp.getData();
       end=null;
       start=null;
@@ -104,16 +122,16 @@ public class MyLinkedList{
       return temp2;
 
     }
-    if (temp.getNext==null){
+    if (temp.getNext()==null){
       String temp2=temp.getData();
       end=temp.getPrev();
       end.setNext(null);
       size--;
       return temp2;
     }
-    if (temp.getPrev==null){
+    if (temp.getPrev()==null){
       String temp2=temp.getData();
-      start=temp.geNext();
+      start=temp.getNext();
       start.setPrev(null);
       size--;
       return temp2;
